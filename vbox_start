@@ -1,0 +1,18 @@
+#!/bin/sh
+
+MACHINE=$1
+
+echo "Change to full resolution"
+./bin/SetResX --width 2560 --height 1600 --scale 1.0 --display 0
+#VBoxManage startvm 2594829f-bfc2-47a0-b804-d766fb516517
+VBoxManage startvm $MACHINE
+
+
+echo "Start VM $MACHINE."
+until $(VBoxManage showvminfo --machinereadable $MACHINE | grep -q ^VMState=.poweroff.)
+do
+  sleep 3
+done
+
+echo "Reset resolution..."
+./bin/SetResX --width 1680 --height 1050 --scale 2.0 --display 0
