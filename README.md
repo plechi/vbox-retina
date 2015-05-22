@@ -10,3 +10,5 @@ Just execute following command in your repo:
 ```
 
 To change the resolution, just update the script.
+
+Uses SetResX from https://www.sendspace.com/file/mef6sk
